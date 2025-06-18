@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<rtde_config>
+	<recipe key="state">
+		<field name="runtime_state" type="UINT32"/>
+		<field name="robot_mode" type="INT32"/>
+		<field name="actual_q" type="VECTOR6D"/>
+		<field name="actual_TCP_force" type="VECTOR6D"/>
+		<field name="actual_TCP_pose" type="VECTOR6D"/>
+		<field name="actual_TCP_speed" type="VECTOR6D"/>
+		<field name="output_bit_registers0_to_31" type="UINT32"/>
+		<field name="output_int_register_0" type="INT32"/>      #mode
+		<field name="output_int_register_1" type="INT32"/>      #vida
+		<field name="output_int_register_2" type="INT32"/>      #rotation
+		<field name="output_double_register_0" type="DOUBLE"/>  #x
+		<field name="output_double_register_1" type="DOUBLE"/>  #y
+		<field name="output_double_register_2" type="DOUBLE"/>  #z
+		<field name="output_double_register_3" type="DOUBLE"/>  #pitch
+		<field name="output_double_register_4" type="DOUBLE"/>  #roll
+		<field name="output_double_register_5" type="DOUBLE"/>  #yaw
+		<field name="output_double_register_6" type="DOUBLE"/>  #width
+	</recipe>
+
+	<recipe key="setp">
+		<field name="input_double_register_0" type="DOUBLE"/>  #x
+		<field name="input_double_register_1" type="DOUBLE"/>  #y
+		<field name="input_double_register_2" type="DOUBLE"/>  #z
+		<field name="input_double_register_3" type="DOUBLE"/>  #pitch
+		<field name="input_double_register_4" type="DOUBLE"/>  #roll
+		<field name="input_double_register_5" type="DOUBLE"/>  #yaw
+		<field name="input_double_register_6" type="DOUBLE"/>  #width
+		<field name="input_int_register_1" type="INT32"/>   #vida
+		<field name="input_int_register_0" type="INT32"/>     #mode
+		<field name="input_int_register_2" type="INT32"/>   #rotation
+
+	</recipe>
+
+	<recipe key="watchdog">
+		<field name="input_bit_registers0_to_31" type="UINT32"/> #vida
+	</recipe>
+
+</rtde_config>
+

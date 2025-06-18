@@ -1,0 +1,97 @@
+ Program
+   Init Variables
+   BeforeStart
+     Home
+     2FG Release (70.7)
+     write_output_boolean_register(0, False )
+     Wait: 1.0
+     Popup: Ola, inicializar codigo e depois clicar ok.
+   Robot Program
+     Wait: 1.0
+     tmp≔p[0,0,0,0,0,0]
+     write_output_integer_register(1,1)
+     sync()
+     Wait: 1.0
+     Wait modo≠99 and pose_check≟0
+     Deteçao_Rotaçao
+       If modo≠99 and pose_check≠1
+         Loop pose_check≠1
+           Script: pose_register.script
+           pose1≔p[tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5]]
+           P_base_goal1≔pose_trans(get_actual_tcp_pose(),pose1)
+           pose1_check≔get_inverse_kin_has_solution(P_base_goal1,get_actual_joint_positions())
+           If pose1_check≟ True 
+             joints≔get_inverse_kin(P_base_goal1,get_actual_joint_positions())
+             write_output_integer_register(2,1)
+             Wait: 0.01
+             pose_check≔1
+             sync()
+           Else
+             write_output_integer_register(2,2)
+             Wait: 0.01
+             sync()
+     Movimento
+       Loop modo≠99
+         sync()
+         Wait: 0.01
+         Wait (modo≟1 or modo≟2 or modo≟0)
+         If modo≟1
+           write_output_boolean_register(0, True )
+           MoveJ
+             joints
+             'Wait DI[2]=HI'
+             twofg_grip_ext(width,20,10)
+             Home
+             MoveJ
+               Basket
+               write_output_boolean_register(0, False )
+               2FG Release (70.7)
+               Home
+               sync()
+               modo≔99
+               Wait: 1.0
+               sync()
+         ElseIf modo≟0
+           write_output_boolean_register(0, True )
+           MoveJ
+             joints
+             'Wait DI[2]=HI'
+             twofg_grip_ext(width,20,10)
+             Home
+             MoveJ
+               Basket
+               write_output_boolean_register(0, False )
+               2FG Release (70.7)
+               Home
+               sync()
+               modo≔99
+               Wait: 1.0
+               sync()
+         ElseIf modo≟2
+           write_output_boolean_register(0, True )
+           MoveJ
+             joints
+             'Wait DI[2]=HI'
+             twofg_grip_ext(width,20,10)
+             Home
+             MoveJ
+               Basket
+               write_output_boolean_register(0, False )
+               2FG Release (70.7)
+               Home
+               sync()
+               modo≔99
+               Wait: 1.0
+               sync()
+     write_output_integer_register(1,0)
+     write_output_integer_register(2,0)
+     pose_check≔0
+     sync()
+     Home
+   Thread_2
+     Loop
+       modo≔read_input_integer_register(0)
+       ciclo≔read_input_integer_register(1)
+       width≔read_input_float_register(6)
+       pose_check≔read_input_integer_register(2)
+       sync()

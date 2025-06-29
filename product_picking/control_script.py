@@ -101,7 +101,8 @@ def test_robot_communication(cor_list):
             try:
                 rx, ry, rz = next(rot_iter)   # tenta próxima rotação
             except StopIteration:
-                raise RuntimeError("Rotações esgotadas antes de encontrar solução cinemática.")
+                print(f"⚠ Detecção {idx_det} ignorada: nenhuma rotação levou a solução cinemática.")
+                break  # sai do while-not-solucionado → passa para a próxima detecção
 
             tentativa += 1
             print(f"  • Tentativa {tentativa} usando rotação (rx={rx:.3f}, ry={ry:.3f}, rz={rz:.3f})…")

@@ -171,7 +171,7 @@ def test_robot_communication(cor_list):
     # Encerramento
     # ────────────────────────────────────────────────────────────────────────
 
-    print("Todas as detecções processadas. Enviando modo 3 para encerrar o ciclo RTDE…")
+    print("Todas as detecções processadas. Enviando modo 99 para encerrar o ciclo RTDE…")
     setp.input_int_register_0 = 99
     con.send(setp)
     time.sleep(0.05)

@@ -48,7 +48,7 @@
                2FG Release (70.7)
                Home
                sync()
-               modo≔99
+               modo≔0
                Wait: 1.0
                sync()
          ElseIf modo≟0
@@ -64,7 +64,7 @@
                2FG Release (70.7)
                Home
                sync()
-               modo≔99
+               modo≔0
                Wait: 1.0
                sync()
          ElseIf modo≟2
@@ -80,7 +80,7 @@
                2FG Release (70.7)
                Home
                sync()
-               modo≔99
+               modo≔0
                Wait: 1.0
                sync()
      write_output_integer_register(1,0)
